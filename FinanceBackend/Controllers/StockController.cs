@@ -1,4 +1,5 @@
 ﻿using FinanceBackend.Data;
+using FinanceBackend.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinanceBackend.Controllers
@@ -16,7 +17,8 @@ namespace FinanceBackend.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var stocks = _context.Stocks.ToList();
+            var stocks = _context.Stocks.ToList()
+                .Select(st => st.ToStockDto());
 
             return Ok(stocks);
         }
@@ -31,7 +33,7 @@ namespace FinanceBackend.Controllers
                 return NotFound();
             }
 
-            return Ok(stock);
+            return Ok(stock.ToStockDto());
         }
     }
 }
