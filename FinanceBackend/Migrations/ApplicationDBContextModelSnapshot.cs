@@ -82,16 +82,16 @@ namespace FinanceBackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Stock");
+                    b.ToTable("Stocks");
                 });
 
             modelBuilder.Entity("FinanceBackend.Models.Comment", b =>
                 {
-                    b.HasOne("FinanceBackend.Models.Stock", "Stock")
+                    b.HasOne("FinanceBackend.Models.Stock", "Stocks")
                         .WithMany("Comments")
                         .HasForeignKey("StockId");
 
-                    b.Navigation("Stock");
+                    b.Navigation("Stocks");
                 });
 
             modelBuilder.Entity("FinanceBackend.Models.Stock", b =>

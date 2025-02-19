@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinanceBackend.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20250215182046_init")]
+    [Migration("20250219141644_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -85,16 +85,16 @@ namespace FinanceBackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Stock");
+                    b.ToTable("Stocks");
                 });
 
             modelBuilder.Entity("FinanceBackend.Models.Comment", b =>
                 {
-                    b.HasOne("FinanceBackend.Models.Stock", "Stock")
+                    b.HasOne("FinanceBackend.Models.Stock", "Stocks")
                         .WithMany("Comments")
                         .HasForeignKey("StockId");
 
-                    b.Navigation("Stock");
+                    b.Navigation("Stocks");
                 });
 
             modelBuilder.Entity("FinanceBackend.Models.Stock", b =>
